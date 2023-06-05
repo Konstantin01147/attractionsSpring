@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Редактирование города</title>
+
+
+</head>
+<body>
+
+<a class="p-2 text-dark" href="/home">Главная</a>
+
+<a class="p-2 text-dark" th:href="'/addAttraction'+${cityId}">Добавить достопримичательность</a>
+
+<h1>Список достопримичательностей:</h1>
+<div th:each="elAttractions : ${attractions}">
+
+        <p class="h3 mb-3 fw-normal" name = "ID" th:value ="${elAttractions.getId()}" th:text="'ID достопримечательности: '+${elAttractions.getId()}"></p>
+        <p class="h3 mb-3 fw-normal" name="Name" th:value="${elAttractions.getName()}" th:text="'Название достопримичательности: '+${el.getName()}"></p>
+        <p class="h3 mb-3 fw-normal" name = "Info" th:value ="${elAttractions.getInfo()}" th:text="'Информация о ней: '+${el.getStartDate()}"></p>
+        <form th:action="'/deleteAttraction/'+ ${elAttractions.getId()}" method="post"><button class="w-100 btn btn-lg btn-primary" type="submit">Удалить</button></form>
+
+
+
+</div>
+
+
+
+</body>
+</html>
